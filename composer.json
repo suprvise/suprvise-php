@@ -1,0 +1,42 @@
+{
+    "name": "suprvise/suprvise-php",
+    "description": "Suprvise PHP",
+    "keywords": [
+        "suprvise",
+        "suprvise-php"
+    ],
+    "homepage": "https://github.com/suprvise/suprvise-php",
+    "license": "GNU AGPLv",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Suprvise",
+            "email": "support@suprvise.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Suprvise\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Suprvise\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
