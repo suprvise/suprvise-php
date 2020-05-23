@@ -1,11 +1,11 @@
-# Very short description of the package
+# Suprvise PHP SDK
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/suprvise/suprvise-php.svg?style=flat-square)](https://packagist.org/packages/suprvise/suprvise-php)
 [![Build Status](https://img.shields.io/travis/suprvise/suprvise-php/master.svg?style=flat-square)](https://travis-ci.org/suprvise/suprvise-php)
 [![Quality Score](https://img.shields.io/scrutinizer/g/suprvise/suprvise-php.svg?style=flat-square)](https://scrutinizer-ci.com/g/suprvise/suprvise-php)
 [![Total Downloads](https://img.shields.io/packagist/dt/suprvise/suprvise-php.svg?style=flat-square)](https://packagist.org/packages/suprvise/suprvise-php)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+Official [Suprvise](https://suprvise.com) PHP SDK.
 
 ## Installation
 
@@ -18,7 +18,19 @@ composer require suprvise/suprvise-php
 ## Usage
 
 ``` php
-// Usage description here
+<?php
+
+require __DIR__ . '../../vendor/autoload.php';
+
+use Suprvise\Suprvise;
+use Suprvise\Logger;
+
+Suprvise::key('suprvise-key-xxx');
+Suprvise::origin('https://example.com'); // Must be a website monitored by Suprvise within your team
+
+Logger::listen();
+
+throw new Exception('Whoops!'); // Captured by Suprvise - Check your dashboard https://suprvise.com/logging
 ```
 
 ### Testing
@@ -27,27 +39,15 @@ composer require suprvise/suprvise-php
 composer test
 ```
 
-### Changelog
-
-Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
-
-## Contributing
-
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
-
 ### Security
 
 If you discover any security related issues, please email support@suprvise.com instead of using the issue tracker.
 
 ## Credits
 
-- [Suprvise](https://github.com/suprvise)
+- [Suprvise](https://suprvise.com)
 - [All Contributors](../../contributors)
 
 ## License
 
 The GNU AGPLv. Please see [License File](LICENSE.md) for more information.
-
-## PHP Package Boilerplate
-
-This package was generated using the [PHP Package Boilerplate](https://laravelpackageboilerplate.com).
