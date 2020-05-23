@@ -6,7 +6,7 @@
         "suprvise-php"
     ],
     "homepage": "https://github.com/suprvise/suprvise-php",
-    "license": "GNU AGPLv",
+    "license": "MIT",
     "type": "library",
     "authors": [
         {

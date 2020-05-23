@@ -50,4 +50,4 @@ If you discover any security related issues, please email support@suprvise.com i
 
 ## License
 
-The GNU AGPLv. Please see [License File](LICENSE.md) for more information.
+MIT
