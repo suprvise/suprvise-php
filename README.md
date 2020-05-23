@@ -20,7 +20,7 @@ composer require suprvise/suprvise-php
 ``` php
 <?php
 
-require __DIR__ . '../../vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 
 use Suprvise\Suprvise;
 use Suprvise\Logger;
