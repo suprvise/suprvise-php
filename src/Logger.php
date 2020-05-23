@@ -18,10 +18,6 @@ class Logger
             throw new \InvalidArgumentException('Suprvise Authentication Error: Suprvise key is missing (hint: \Suprvise\Suprvise::key(\'suprvise-key-xxx\')');
         }
 
-        if (! Suprvise::secret()) {
-            throw new \InvalidArgumentException('Suprvise Authentication Error: Suprvise secret is missing (hint: \Suprvise\Suprvise::secret(\'suprvise-secret-xxx\')');
-        }
-
         if (! Suprvise::origin()) {
             throw new \InvalidArgumentException('Suprvise Error: Suprvise origin is missing (hint: \Suprvise\Suprvise::origin(\'https://my-monitored-website.com\')');
         }
@@ -32,7 +28,6 @@ class Logger
 
         $payload = [
             'key'     => Suprvise::key(),
-            'secret'  => Suprvise::secret(),
             'origin'  => Suprvise::origin(),
             'code'    => $exception->getCode(),
             'message' => $exception->getMessage(),
