@@ -1,13 +1,18 @@
 <?php
 
+/**
+ * Usage
+ * =====
+ *
+ * $ php examples/index.php {dsn}
+ */
+
 require __DIR__ . '../../vendor/autoload.php';
 
-use Suprvise\Suprvise;
-use Suprvise\Logger;
+use Suprvise\{ Suprvise, Logger };
 
-Suprvise::key('suprvise-key-xxx');
-Suprvise::secret('suprvise-secret-xxx');
-Suprvise::origin('https://example.com'); // Must be a website that has a monitor
+Suprvise::dsn('logger', $argv[1] ?? die("DSN is required (usage: php examples/index.php {dsn})\n"));
+Suprvise::debug(true);
 
 Logger::listen();
 

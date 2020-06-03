@@ -14,20 +14,15 @@ class Logger
 
     public static function catch($exception)
     {
-        if (! Suprvise::key()) {
-            throw new \InvalidArgumentException('Suprvise Authentication Error: Suprvise key is missing (hint: \Suprvise\Suprvise::key(\'suprvise-key-xxx\')');
-        }
+        $dsn = Suprvise::dsn('logger');
 
-        if (! Suprvise::origin()) {
-            throw new \InvalidArgumentException('Suprvise Error: Suprvise origin is missing (hint: \Suprvise\Suprvise::origin(\'https://my-monitored-website.com\')');
+        if (! $dsn) {
+            throw new \InvalidArgumentException('Suprvise Authentication Error: Suprvise Logger DSN is missing (hint: \Suprvise\Suprvise::dsn(\'logger\', \'your-dsn-url\')');
         }
-
-        $endpoint = Suprvise::api('/logger');
 
         $headers = ['Content-Type' => 'application/json'];
 
         $payload = [
-            'key'     => Suprvise::key(),
             'origin'  => Suprvise::origin(),
             'code'    => $exception->getCode(),
             'message' => $exception->getMessage(),
@@ -37,10 +32,10 @@ class Logger
         ];
 
         if (Suprvise::debug()) {
-            dump(['endpoint' => $endpoint, 'payload' => $payload]);
+            dump(['dsn' => $dsn, 'payload' => $payload]);
         }
 
-        $response = (new Http)->request('POST', $endpoint, [
+        $response = (new Http)->request('POST', $dsn, [
             'headers' => $headers,
             'json'    => $payload,
         ]);

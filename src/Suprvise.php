@@ -4,32 +4,21 @@ namespace Suprvise;
 
 class Suprvise
 {
-    public static $key = '';
+    public static $dsn = [
+        'logger' => '',
+    ];
 
-    public static $secret = '';
-
-    public static $api = 'https://suprvise.com/api';
-
-    public static $origin = 'https://example.com';
+    public static $origin = '';
 
     public static $debug = false;
 
-    public static function key(?string $key = ''): string
+    public static function dsn(string $key = '', ?string $value = ''): string
     {
-        if ($key) {
-            static::$key = $key;
+        if ($value) {
+            static::$dsn[$key] = $value;
         }
 
-        return static::$key;
-    }
-
-    public static function secret(?string $secret = ''): string
-    {
-        if ($secret) {
-            static::$secret = $secret;
-        }
-
-        return static::$secret;
+        return static::$dsn[$key] ?? '';
     }
 
     public static function origin(?string $origin = ''): string
@@ -48,10 +37,5 @@ class Suprvise
         }
 
         return static::$debug;
-    }
-
-    public static function api(string $endpoint): string
-    {
-        return static::$api . $endpoint;
     }
 }
